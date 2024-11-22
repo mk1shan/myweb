@@ -109,7 +109,7 @@ const Home = () => {
                                 maxWidth: '600px'
                             }}
                         >
-                            Full Stack Developer 
+                            Software Engineering Intern
                         </Typography>
 
                         <Box sx={{ 
