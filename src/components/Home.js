@@ -109,7 +109,7 @@ const Home = () => {
                                 maxWidth: '600px'
                             }}
                         >
-                            Software Engineering Intern
+                            Software Engineering Inter
                         </Typography>
 
                         <Box sx={{ 
@@ -120,7 +120,7 @@ const Home = () => {
                         }}>
                             <Button 
                                 variant="contained" 
-                                href="#projects"
+                                href="/projects"
                                 sx={{
                                     bgcolor: '#3b82f6',
                                     px: 4,

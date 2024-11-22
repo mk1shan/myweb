@@ -1,79 +1,170 @@
 import React from 'react';
-import { Container, Box, Typography, List, ListItem, ListItemText, ListItemIcon } from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
-import MailIcon from '@mui/icons-material/Mail';
-import PhoneIcon from '@mui/icons-material/Phone';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import { 
+  Container, Box, Typography, List, ListItem, ListItemIcon, 
+  ListItemText, Paper, Divider, LinearProgress,Grid
+} from '@mui/material';
+import { 
+  Home as HomeIcon, 
+  Mail as MailIcon, 
+  Phone as PhoneIcon,
+  School as SchoolIcon,
+  Work as WorkIcon,
+  Code as CodeIcon,
+  Star as StarIcon,
+    
+} from '@mui/icons-material';
 import { motion } from 'framer-motion';
+
+const skillsList = [
+  { name: "Full Stack Development", level: 85 },
+  { name: "Cloud Computing", level: 80 },
+  { name: "Astronomical Studies", level: 75 },
+  { name: "Technical Writing", level: 70 },
+];
 
 const About = () => {
   return (
-    <Container maxWidth="md" sx={{ py: 12, position: 'relative', overflow: 'hidden' }}>
-      {/* Background animation */}
+    <Container maxWidth="lg" sx={{ py: 8 }}>
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2 }}
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'url(/path-to-your-space-background.jpg) no-repeat center center/cover',
-          zIndex: -1,
-          filter: 'blur(2px)',
-          opacity: 0.5
-        }}
-      />
-
-      {/* Rocket animation */}
-      <motion.div
-        initial={{ x: '-100vw' }}
-        animate={{ x: '100vw' }}
-        transition={{ duration: 10, repeat: Infinity, repeatType: 'loop', ease: 'linear' }}
-        style={{ position: 'absolute', top: '10%', left: 0, zIndex: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
       >
-        <RocketLaunchIcon sx={{ fontSize: 50, color: 'white' }} />
-      </motion.div>
+        <Box sx={{ mb: 6 }}>
+          <Typography 
+            variant="h2" 
+            sx={{
+              background: 'linear-gradient(45deg, #3b82f6, #8b5cf6)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              mb: 3
+            }}
+          >
+            About Me
+          </Typography>
+          <Paper 
+            elevation={3}
+            sx={{
+              p: 4,
+              background: 'rgba(255,255,255,0.05)',
+              backdropFilter: 'blur(10px)',
+              borderRadius: 2
+            }}
+          >
+            <Typography variant="body1" paragraph sx={{ color: '#f8fafc' }}>
+              I'm a passionate Software Engineering undergraduate at KDU with a deep fascination 
+              for space technology and cloud computing. Currently working as a Software Engineer 
+              Intern at Avantrio, I blend my technical skills with creative problem-solving to 
+              build innovative solutions.
+            </Typography>
+            <Typography variant="body1" paragraph sx={{ color: '#f8fafc' }}>
+              My journey in software development is complemented by my interest in astronomical 
+              studies, where I explore the intersection of technology and space science. I'm also 
+              actively involved in technical writing, sharing knowledge and insights with the 
+              developer community.
+            </Typography>
+          </Paper>
+        </Box>
 
-      <Box sx={{ textAlign: 'center', mb: 6 }}>
-        <Typography variant="h4" fontWeight="bold" gutterBottom>
-          About Me
-        </Typography>
-        <Typography variant="body1" color="textSecondary">
-          Here is some information about me.
-        </Typography>
-      </Box>
-      <Box sx={{ bgcolor: 'rgba(31, 41, 55, 0.5)', p: 4, borderRadius: 2, boxShadow: 3 }}>
-        <List>
-          <ListItem>
-            <ListItemIcon>
-              <LocationOnIcon sx={{ color: 'rgba(168, 85, 247, 0.8)' }} />
-            </ListItemIcon>
-            <ListItemText primary="Address:" secondary="N0,147 kasagala, weeraketiya" />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <HomeIcon sx={{ color: 'rgba(168, 85, 247, 0.8)' }} />
-            </ListItemIcon>
-            <ListItemText primary="Zip code:" secondary="82248" />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <MailIcon sx={{ color: 'rgba(168, 85, 247, 0.8)' }} />
-            </ListItemIcon>
-            <ListItemText primary="Email:" secondary="mudipakishanimayanga@gmail.com" />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <PhoneIcon sx={{ color: 'rgba(168, 85, 247, 0.8)' }} />
-            </ListItemIcon>
-            <ListItemText primary="Phone:" secondary="+94712416779" />
-          </ListItem>
-        </List>
-      </Box>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Paper 
+              elevation={3}
+              sx={{
+                p: 4,
+                background: 'rgba(255,255,255,0.05)',
+                backdropFilter: 'blur(10px)',
+                borderRadius: 2,
+                height: '100%'
+              }}
+            >
+              <Typography 
+                variant="h5" 
+                sx={{ 
+                  mb: 3,
+                  color: '#f8fafc',
+                  borderBottom: '2px solid #3b82f6',
+                  pb: 1
+                }}
+              >
+                Contact Information
+              </Typography>
+              <List>
+                <ListItem>
+                  <ListItemIcon>
+                    <HomeIcon sx={{ color: 'rgba(168, 85, 247, 0.8)' }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Location:" secondary="82248" />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <MailIcon sx={{ color: 'rgba(168, 85, 247, 0.8)' }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Email:" secondary="mudipakishanimayanga@gmail.com" />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <PhoneIcon sx={{ color: 'rgba(168, 85, 247, 0.8)' }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Phone:" secondary="+94712416779" />
+                </ListItem>
+              </List>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Paper 
+              elevation={3}
+              sx={{
+                p: 4,
+                background: 'rgba(255,255,255,0.05)',
+                backdropFilter: 'blur(10px)',
+                borderRadius: 2,
+                height: '100%'
+              }}
+            >
+              <Typography 
+                variant="h5" 
+                sx={{ 
+                  mb: 3,
+                  color: '#f8fafc',
+                  borderBottom: '2px solid #3b82f6',
+                  pb: 1
+                }}
+              >
+                Skills & Expertise
+              </Typography>
+              <Box sx={{ mt: 2 }}>
+                {skillsList.map((skill, index) => (
+                  <Box key={index} sx={{ mb: 3 }}>
+                    <Typography variant="body1" sx={{ color: '#f8fafc', mb: 1 }}>
+                      {skill.name}
+                    </Typography>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: '100%' }}
+                      transition={{ duration: 1, delay: index * 0.2 }}
+                    >
+                      <LinearProgress 
+                        variant="determinate" 
+                        value={skill.level}
+                        sx={{
+                          height: 8,
+                          borderRadius: 5,
+                          bgcolor: 'rgba(255,255,255,0.1)',
+                          '& .MuiLinearProgress-bar': {
+                            background: 'linear-gradient(45deg, #3b82f6, #8b5cf6)'
+                          }
+                        }}
+                      />
+                    </motion.div>
+                  </Box>
+                ))}
+              </Box>
+            </Paper>
+          </Grid>
+        </Grid>
+      </motion.div>
     </Container>
   );
 };
