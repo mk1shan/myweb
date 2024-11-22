@@ -1,252 +1,97 @@
+// src/components/Contact.js
 import React from 'react';
-import {
-  Container, Box, Typography, TextField, Button, Grid,
-  Paper, IconButton, Divider, List, ListItem, ListItemIcon,
-  ListItemText
-} from '@mui/material';
-import {
-  GitHub, LinkedIn, Mail, Phone, LocationOn,
-  Send as SendIcon
-} from '@mui/icons-material';
 import { motion } from 'framer-motion';
+import { Mail, GitHub, Linkedin } from 'react-feather';
 
 const Contact = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <Typography 
-          variant="h2" 
-          sx={{
-            textAlign: 'center',
-            mb: 6,
-            background: 'linear-gradient(45deg, #3b82f6, #8b5cf6)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
+    <div className="min-h-screen bg-gradient-to-b from-black via-purple-900/20 to-black">
+      <div className="container mx-auto px-4 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          Get in Touch
-        </Typography>
+          <h1 className="text-4xl md:text-6xl font-bold mb-12 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text text-center">
+            Get In Touch
+          </h1>
 
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <Paper
-              sx={{
-                p: 4,
-                height: '100%',
-                background: 'rgba(255,255,255,0.05)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: 2,
-                border: '1px solid rgba(255,255,255,0.1)'
-              }}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-slate-800/50 p-8 rounded-xl backdrop-blur-sm border border-blue-500/10"
             >
-              <Box component="form" noValidate>
-                <Typography 
-                  variant="h5" 
-                  sx={{ 
-                    color: '#f8fafc',
-                    mb: 3,
-                    borderBottom: '2px solid #3b82f6',
-                    pb: 1
-                  }}
-                >
+              <form className="space-y-6">
+                <div>
+                  <label className="text-gray-200 mb-2 block">Name</label>
+                  <input
+                    type="text"
+                    className="w-full bg-slate-900/50 border border-blue-500/20 rounded-lg p-3 focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+                <div>
+                  <label className="text-gray-200 mb-2 block">Email</label>
+                  <input
+                    type="email"
+                    className="w-full bg-slate-900/50 border border-blue-500/20 rounded-lg p-3 focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+                <div>
+                  <label className="text-gray-200 mb-2 block">Message</label>
+                  <textarea
+                    rows="4"
+                    className="w-full bg-slate-900/50 border border-blue-500/20 rounded-lg p-3 focus:outline-none focus:border-blue-500"
+                  ></textarea>
+                </div>
+                <button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-lg hover:opacity-90 transition">
                   Send Message
-                </Typography>
-                <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label="Name"
-                      variant="outlined"
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          color: '#f8fafc',
-                          '& fieldset': {
-                            borderColor: 'rgba(248,250,252,0.2)',
-                          },
-                          '&:hover fieldset': {
-                            borderColor: '#3b82f6',
-                          },
-                        },
-                        '& .MuiInputLabel-root': {
-                          color: 'rgba(248,250,252,0.6)',
-                        },
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label="Email"
-                      variant="outlined"
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          color: '#f8fafc',
-                          '& fieldset': {
-                            borderColor: 'rgba(248,250,252,0.2)',
-                          },
-                          '&:hover fieldset': {
-                            borderColor: '#3b82f6',
-                          },
-                        },
-                        '& .MuiInputLabel-root': {
-                          color: 'rgba(248,250,252,0.6)',
-                        },
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      multiline
-                      rows={4}
-                      label="Message"
-                      variant="outlined"
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          color: '#f8fafc',
-                          '& fieldset': {
-                            borderColor: 'rgba(248,250,252,0.2)',
-                          },
-                          '&:hover fieldset': {
-                            borderColor: '#3b82f6',
-                          },
-                        },
-                        '& .MuiInputLabel-root': {
-                          color: 'rgba(248,250,252,0.6)',
-                        },
-                      }}
-                    />
-                  </Grid>
-                </Grid>
-                <Button
-                  variant="contained"
-                  endIcon={<SendIcon />}
-                  sx={{
-                    mt: 3,
-                    bgcolor: '#3b82f6',
-                    '&:hover': {
-                      bgcolor: '#2563eb',
-                    },
-                  }}
-                >
-                  Send Message
-                </Button>
-              </Box>
-            </Paper>
-          </Grid>
+                </button>
+              </form>
+            </motion.div>
 
-          <Grid item xs={12} md={6}>
-            <Paper
-              sx={{
-                p: 4,
-                height: '100%',
-                background: 'rgba(255,255,255,0.05)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: 2,
-                border: '1px solid rgba(255,255,255,0.1)'
-              }}
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+              className="bg-slate-800/50 p-8 rounded-xl backdrop-blur-sm border border-blue-500/10"
             >
-              <Typography 
-                variant="h5" 
-                sx={{ 
-                  color: '#f8fafc',
-                  mb: 3,
-                  borderBottom: '2px solid #3b82f6',
-                  pb: 1
-                }}
-              >
-                Contact Information
-              </Typography>
-              <List>
-                <ListItem>
-                  <ListItemIcon>
-                    <Mail sx={{ color: '#3b82f6' }} />
-                  </ListItemIcon>
-                  <ListItemText 
-                    primary="Email"
-                    secondary="mudipakishanimayanga@gmail.com"
-                    sx={{
-                      '& .MuiListItemText-primary': { color: '#f8fafc' },
-                      '& .MuiListItemText-secondary': { color: 'rgba(248,250,252,0.6)' }
-                    }}
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
-                    <Phone sx={{ color: '#3b82f6' }} />
-                  </ListItemIcon>
-                  <ListItemText 
-                    primary="Phone"
-                    secondary="+94712416779"
-                    sx={{
-                      '& .MuiListItemText-primary': { color: '#f8fafc' },
-                      '& .MuiListItemText-secondary': { color: 'rgba(248,250,252,0.6)' }
-                    }}
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
-                    <LocationOn sx={{ color: '#3b82f6' }} />
-                  </ListItemIcon>
-                  <ListItemText 
-                    primary="Location"
-                    secondary="82248"
-                    sx={{
-                      '& .MuiListItemText-primary': { color: '#f8fafc' },
-                      '& .MuiListItemText-secondary': { color: 'rgba(248,250,252,0.6)' }
-                    }}
-                  />
-                </ListItem>
-              </List>
-
-              <Divider sx={{ my: 3, borderColor: 'rgba(248,250,252,0.1)' }} />
-
-              <Typography 
-                variant="h6" 
-                sx={{ 
-                  color: '#f8fafc',
-                  mb: 2
-                }}
-              >
-                Social Links
-              </Typography>
-              <Box sx={{ display: 'flex', gap: 2 }}>
-                <IconButton 
-                  href="https://github.com/mk1shan" 
-                  target="_blank"
-                  sx={{
-                    color: '#f8fafc',
-                    bgcolor: 'rgba(59,130,246,0.1)',
-                    '&:hover': {
-                      bgcolor: 'rgba(59,130,246,0.2)',
-                    },
-                  }}
-                >
-                  <GitHub />
-                </IconButton>
-                <IconButton 
-                  href="https://www.linkedin.com/in/mudipa-kishan/"
-                  target="_blank"
-                  sx={{
-                    color: '#f8fafc',
-                    bgcolor: 'rgba(59,130,246,0.1)',
-                    '&:hover': {
-                      bgcolor: 'rgba(59,130,246,0.2)',
-                    },
-                  }}
-                >
-                  <LinkedIn />
-                </IconButton>
-              </Box>
-            </Paper>
-          </Grid>
-        </Grid>
-      </motion.div>
-    </Container>
+              <div className="space-y-8">
+                <div className="flex items-center space-x-4">
+                  <Mail className="text-blue-400" />
+                  <div>
+                    <h3 className="text-xl font-semibold">Email</h3>
+                    <p className="text-gray-400">mudipakishan@gmail.com</p>
+                  </div>
+                </div>
+                
+                <div className="flex space-x-4">
+                  <a
+                    href="https://github.com/mk1shan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-slate-900/50 rounded-lg hover:bg-blue-500/20 transition"
+                  >
+                    <GitHub className="text-gray-200" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/mudipa-kishan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-slate-900/50 rounded-lg hover:bg-blue-500/20 transition"
+                  >
+                    <Linkedin className="text-gray-200" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
   );
 };
 

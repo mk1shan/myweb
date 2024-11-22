@@ -1,129 +1,129 @@
 import React from 'react';
-import { 
-  Container, Typography, Grid, Paper, Box,
-  Card, CardContent, Chip, Divider
-} from '@mui/material';
+import { Container, Grid, Card, CardContent, Box, Chip } from '@mui/material';
 import { motion } from 'framer-motion';
-import { Code, Cloud, School } from '@mui/icons-material';
+import { Award, Cloud, Code, Book, Monitor, Brain } from 'react-feather';
+
+const certificates = [
+  {
+    title: "JavaScript Essentials 1",
+    issuer: "CISCO",
+    date: "2023",
+    description: "Fundamentals of JavaScript programming and web development",
+    category: "Web Development",
+    icon: <Code className="w-6 h-6" />
+  },
+  {
+    title: "Getting Started with Compute",
+    issuer: "AWS Educate",
+    date: "2023",
+    description: "Introduction to AWS compute services and cloud infrastructure",
+    category: "Cloud Computing",
+    icon: <Cloud className="w-6 h-6" />
+  },
+  {
+    title: "Getting Started with Storage",
+    issuer: "AWS Educate",
+    date: "2023",
+    description: "AWS storage solutions and best practices",
+    category: "Cloud Computing",
+    icon: <Cloud className="w-6 h-6" />
+  },
+  {
+    title: "Introduction to Cloud 101",
+    issuer: "AWS Educate",
+    date: "2023",
+    description: "Fundamentals of cloud computing and AWS services",
+    category: "Cloud Computing",
+    icon: <Cloud className="w-6 h-6" />
+  },
+  {
+    title: "SIMPLILEARN Certification",
+    issuer: "SIMPLILEARN",
+    date: "2023",
+    description: "Advanced technology and digital transformation training",
+    category: "Professional Development",
+    icon: <Award className="w-6 h-6" />
+  }
+];
+
+const getCategoryColor = (category) => {
+  const colors = {
+    'Web Development': 'from-blue-400 to-cyan-400',
+    'Cloud Computing': 'from-blue-400 to-purple-400',
+    'Professional Development': 'from-purple-400 to-pink-400'
+  };
+  return colors[category] || 'from-blue-400 to-purple-400';
+};
 
 const Certificates = () => {
-  const certifications = {
-    AWS: [
-      "AWS Educate Getting Started with Compute",
-      "AWS Educate Getting Started with Storage",
-      "AWS Services Overview for IT Professionals",
-      "AWS Educate Introduction to Cloud 101"
-    ],
-    CISCO: [
-      "JavaScript Essentials 1"
-    ],
-    SIMPLILEARN: [
-      "Become job-ready in coding Basics of Data Structures and Algorithms"
-    ]
-  };
-
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <Typography 
-          variant="h2" 
-          sx={{
-            textAlign: 'center',
-            mb: 6,
-            background: 'linear-gradient(45deg, #3b82f6, #8b5cf6)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
+    <div className="min-h-screen relative bg-gradient-to-b from-black via-blue-900/30 to-black overflow-hidden">
+      {/* Keep existing starry background and glowing orbs code */}
+      
+      <Container className="relative z-10 py-16">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
         >
-          Certifications
-        </Typography>
+          <h1 className="text-4xl md:text-6xl font-bold mb-12 bg-gradient-to-r from-blue-300 via-purple-300 to-cyan-300 text-transparent bg-clip-text text-center">
+            Certificates & Achievements
+          </h1>
 
-        <Grid container spacing={4}>
-          {Object.entries(certifications).map(([provider, certs], index) => (
-            <Grid item xs={12} md={6} key={provider}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card
-                  sx={{
-                    height: '100%',
-                    background: 'rgba(255,255,255,0.05)',
-                    backdropFilter: 'blur(10px)',
-                    borderRadius: 2,
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(0,0,0,0.2)'
-                    }
-                  }}
+          <Grid container spacing={4}>
+            {certificates.map((cert, index) => (
+              <Grid item xs={12} md={6} key={cert.title}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  whileHover={{ scale: 1.02 }}
                 >
-                  <CardContent>
-                    <Box sx={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: 2, 
-                      mb: 3 
-                    }}>
-                      {provider === 'AWS' && <Cloud sx={{ color: '#3b82f6' }} />}
-                      {provider === 'CISCO' && <Code sx={{ color: '#3b82f6' }} />}
-                      {provider === 'SIMPLILEARN' && <School sx={{ color: '#3b82f6' }} />}
-                      <Typography 
-                        variant="h5" 
-                        sx={{ 
-                          color: '#f8fafc',
-                          fontWeight: 600
-                        }}
-                      >
-                        {provider}
-                      </Typography>
-                    </Box>
-                    <Divider sx={{ mb: 3, borderColor: 'rgba(248,250,252,0.1)' }} />
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                      {certs.map((cert, i) => (
-                        <Paper
-                          key={i}
-                          sx={{
-                            p: 2,
-                            background: 'rgba(59,130,246,0.1)',
-                            borderRadius: 2,
-                            border: '1px solid rgba(59,130,246,0.2)'
-                          }}
-                        >
-                          <Typography 
-                            variant="body2" 
-                            sx={{ color: '#f8fafc' }}
-                          >
-                            {cert}
-                          </Typography>
-                        </Paper>
-                      ))}
-                    </Box>
-                    <Box sx={{ mt: 3 }}>
-                      <Chip 
-                        label={`${certs.length} Certificates`}
-                        size="small"
-                        sx={{
-                          background: 'rgba(59,130,246,0.2)',
-                          color: '#3b82f6',
-                          borderRadius: '4px'
-                        }}
-                      />
-                    </Box>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
-      </motion.div>
-    </Container>
+                  <Card 
+                    className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-sm 
+                              border border-blue-500/10 hover:border-blue-400/30 
+                              hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all duration-500"
+                  >
+                    <CardContent className="p-6">
+                      <Box className="flex flex-col space-y-4">
+                        <div className="flex items-start gap-4">
+                          <div className={`p-3 rounded-lg bg-gradient-to-br ${getCategoryColor(cert.category)} bg-opacity-10`}>
+                            {cert.icon}
+                          </div>
+                          <div>
+                            <h3 className="text-xl text-blue-100 font-semibold mb-1">{cert.title}</h3>
+                            <p className="text-blue-200/70">{cert.issuer}</p>
+                          </div>
+                        </div>
+                        <p className="text-gray-300">{cert.description}</p>
+                        <div className="flex items-center justify-between">
+                          <Chip 
+                            label={cert.category}
+                            size="small"
+                            className="bg-blue-500/10 text-blue-300"
+                          />
+                          <span className="text-blue-200/70">{cert.date}</span>
+                        </div>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
+        </motion.div>
+      </Container>
+
+      <style jsx>{`
+        @keyframes twinkle {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.8; }
+        }
+        .animate-twinkle {
+          animation: twinkle infinite ease-in-out;
+        }
+      `}</style>
+    </div>
   );
 };
 

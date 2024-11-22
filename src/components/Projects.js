@@ -1,253 +1,223 @@
 import React from 'react';
-import { 
-  Container, Grid, Card, CardContent, Typography,
-  Box, Chip, IconButton, CardActions
-} from '@mui/material';
-import { 
-  GitHub, Launch, Inventory, MedicalServices,
-  School, MusicNote, Psychology, Code
-} from '@mui/icons-material';
 import { motion } from 'framer-motion';
+import {
+  Github,
+  ExternalLink,
+  Database,
+  Store,
+  Stethoscope,
+  GraduationCap,
+  Music2,
+  Heart,
+  Container,
+  FileJson,
+  Boxes,
+  GitBranch,
+  Cable,
+  Cpu,
+  MonitorSmartphone,
+  Code
+} from 'lucide-react';
+
+const TechIcon = ({ name }) => {
+  const icons = {
+    'React': <Code className="w-4 h-4" />,
+    'Node.js': <FileJson className="w-4 h-4" />,
+    'MongoDB': <Database className="w-4 h-4" />,
+    'MySQL': <Database className="w-4 h-4" />,
+    'Spring': <Container className="w-4 h-4" />,
+    'Python': <Boxes className="w-4 h-4" />,
+    'Git': <GitBranch className="w-4 h-4" />,
+    'API': <Cable className="w-4 h-4" />,
+    'AI': <Cpu className="w-4 h-4" />,
+    'Responsive': <MonitorSmartphone className="w-4 h-4" />
+  };
+
+  return icons[name] || null;
+};
 
 const projects = [
   {
     title: "StockWise",
-    description: "A comprehensive inventory management system designed to streamline shop operations. Features include real-time stock tracking, user management, customer database, and order processing with detailed analytics.",
-    year: "2024",
-    tech: ["Java", "MySQL", "Spring Boot", "React JS"],
+    description: "Intelligent inventory management system with real-time analytics and predictive stock management.",
+    icon: <Store className="w-6 h-6" />,
+    gradient: "from-blue-600 to-cyan-600",
+    mainTech: ["React", "Spring", "MySQL", "API"],
     features: [
-      "Real-time Inventory Tracking",
-      "User Role Management",
-      "Customer Database",
-      "Order Processing",
-      "Analytics Dashboard"
+      "Real-time Analytics Dashboard",
+      "Predictive Stock Management",
+      "Multi-branch Support",
+      "Advanced Reporting"
     ],
     github: "https://github.com/mk1shan/stockwise",
-    demo: "#",
-    icon: <Inventory />,
-    gradient: "linear-gradient(135deg, #1a237e, #0d47a1)"
-  },
-  {
-    title: "Tiny Teeth",
-    description: "Advanced dental hospital management system with integrated patient records, appointment scheduling, and treatment tracking. Streamlines dental practice operations and enhances patient care.",
-    year: "2024",
-    tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    features: [
-      "Patient Records Management",
-      "Appointment Scheduling",
-      "Treatment Planning",
-      "Billing System",
-      "Doctor Dashboard"
-    ],
-    github: "https://github.com/mk1shan/tiny-teeth",
-    demo: "#",
-    icon: <MedicalServices />,
-    gradient: "linear-gradient(135deg, #00897b, #006064)"
-  },
-  {
-    title: "Student Management System",
-    description: "Full-stack application for managing student information, course enrollments, and academic performance. Features include attendance tracking and progress monitoring.",
-    year: "2022",
-    tech: ["React JS", "Node JS", "Express JS", "MongoDB"],
-    features: [
-      "Student Profile Management",
-      "Course Registration",
-      "Attendance Tracking",
-      "Grade Management",
-      "Progress Reports"
-    ],
-    github: "https://github.com/mk1shan/student-mgmt",
-    demo: "#",
-    icon: <School />,
-    gradient: "linear-gradient(135deg, #ad1457, #880e4f)"
-  },
-  {
-    title: "Music Web App",
-    description: "Modern music streaming platform with customizable playlists, genre-based libraries, and personalized recommendations. Built with modern web technologies for optimal performance.",
-    year: "2024",
-    tech: ["React JS", "Vite.js", "Tailwind CSS", "Node.js"],
-    features: [
-      "Custom Playlists",
-      "Genre Categories",
-      "Music Player",
-      "User Profiles",
-      "Song Recommendations"
-    ],
-    github: "https://github.com/mk1shan/music-app",
-    demo: "mudipakishan.me",
-    icon: <MusicNote />,
-    gradient: "linear-gradient(135deg, #311b92, #4527a0)"
+    live: "#",
+    priority: "Featured"
   },
   {
     title: "EmoCare",
-    description: "AI-powered mental health support platform featuring an intelligent chatbot for depression assessment and personalized support. Includes mood tracking, therapeutic activities, and professional connections.",
-    year: "2024",
-    tech: ["Python", "Rasa Framework", "React JS", "Node.js", "MongoDB"],
+    description: "AI-powered mental health platform with real-time emotion analysis and support system.",
+    icon: <Heart className="w-6 h-6" />,
+    gradient: "from-purple-600 to-pink-600",
+    mainTech: ["Python", "AI", "MongoDB", "React"],
     features: [
-      "AI Chatbot Assessment",
-      "Mood Tracking",
-      "Therapeutic Activities",
-      "Media Recommendations",
-      "Community Support",
-      "Professional Help Network"
+      "Emotion Analysis AI",
+      "24/7 Support System",
+      "Professional Network",
+      "Progress Tracking"
     ],
     github: "https://github.com/mk1shan/emocare",
-    demo: "#",
-    icon: <Psychology />,
-    gradient: "linear-gradient(135deg, #c2185b, #d32f2f)"
+    live: "#",
+    priority: "Featured"
+  },
+  {
+    title: "Tiny Teeth",
+    description: "Modern dental clinic management system with integrated patient care workflows.",
+    icon: <Stethoscope className="w-6 h-6" />,
+    gradient: "from-cyan-600 to-teal-600",
+    mainTech: ["Node.js", "MongoDB", "React", "API"],
+    features: [
+      "Smart Scheduling",
+      "Treatment Tracking",
+      "Patient Portal",
+      "Billing System"
+    ],
+    github: "https://github.com/mk1shan/tiny-teeth",
+    live: "#"
+  },
+  {
+    title: "Music Stream",
+    description: "Modern music streaming platform with personalized recommendations and playlist management.",
+    icon: <Music2 className="w-6 h-6" />,
+    gradient: "from-indigo-600 to-purple-600",
+    mainTech: ["React", "Node.js", "MongoDB", "API"],
+    features: [
+      "Personalized Playlists",
+      "Real-time Streaming",
+      "Social Sharing",
+      "Artist Dashboard"
+    ],
+    github: "https://github.com/mk1shan/music-stream",
+    live: "#"
   }
 ];
 
 const ProjectCard = ({ project }) => (
-  <Card 
-    sx={{
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      background: 'rgba(255,255,255,0.05)',
-      backdropFilter: 'blur(10px)',
-      borderRadius: 2,
-      border: '1px solid rgba(255,255,255,0.1)',
-      transition: 'transform 0.3s ease-in-out',
-      '&:hover': {
-        transform: 'translateY(-8px)',
-        boxShadow: '0 12px 20px rgba(0,0,0,0.2)'
-      }
-    }}
-  >
-    <Box 
-      sx={{ 
-        p: 3, 
-        background: project.gradient,
-        display: 'flex',
-        alignItems: 'center',
-        gap: 2
-      }}
-    >
-      {project.icon}
-      <Typography variant="h5" sx={{ color: '#fff', fontWeight: 600 }}>
-        {project.title}
-      </Typography>
-    </Box>
-    
-    <CardContent sx={{ flexGrow: 1, p: 3 }}>
-      <Typography variant="body1" sx={{ color: '#f8fafc', mb: 3 }}>
-        {project.description}
-      </Typography>
-      
-      <Box sx={{ mb: 3 }}>
-        <Typography variant="subtitle1" sx={{ color: '#f8fafc', mb: 1, fontWeight: 600 }}>
-          Key Features:
-        </Typography>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-          {project.features.map((feature) => (
-            <Chip
-              key={feature}
-              label={feature}
-              size="small"
-              sx={{
-                background: 'rgba(255,255,255,0.05)',
-                color: '#f8fafc',
-                borderRadius: '4px',
-                border: '1px solid rgba(255,255,255,0.1)'
-              }}
-            />
+  <div className="group relative">
+    <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-500"></div>
+    <div className="relative bg-gradient-to-br from-blue-900/40 to-purple-900/40 rounded-xl 
+                    backdrop-blur-sm border border-blue-400/20 
+                    group-hover:border-blue-300/40 transition-all duration-300
+                    overflow-hidden">
+      {/* Header */}
+      <div className={`bg-gradient-to-r ${project.gradient} p-4 flex items-center justify-between`}>
+        <div className="flex items-center gap-3">
+          <div className="p-2 rounded-lg bg-white/10">
+            {project.icon}
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+            {project.priority === "Featured" && (
+              <span className="text-xs bg-white/20 px-2 py-1 rounded-full">Featured Project</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6 space-y-4">
+        <p className="text-blue-100/80 leading-relaxed">
+          {project.description}
+        </p>
+
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2">
+          {project.mainTech.map((tech) => (
+            <div key={tech} 
+                 className="flex items-center gap-1.5 bg-blue-400/10 text-blue-300 px-3 py-1 rounded-full text-sm">
+              <TechIcon name={tech} />
+              {tech}
+            </div>
           ))}
-        </Box>
-      </Box>
-      
-      <Box sx={{ mb: 2 }}>
-        <Typography variant="subtitle1" sx={{ color: '#f8fafc', mb: 1, fontWeight: 600 }}>
-          Technologies:
-        </Typography>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-          {project.tech.map((tech) => (
-            <Chip
-              key={tech}
-              label={tech}
-              size="small"
-              sx={{
-                background: 'rgba(59,130,246,0.1)',
-                color: '#3b82f6',
-                borderRadius: '4px'
-              }}
-            />
-          ))}
-        </Box>
-      </Box>
-      
-      <Typography 
-        variant="caption" 
-        sx={{ 
-          color: 'rgba(248,250,252,0.6)',
-          display: 'block'
-        }}
-      >
-        Year: {project.year}
-      </Typography>
-    </CardContent>
-    
-    <CardActions sx={{ p: 2, justifyContent: 'space-between' }}>
-      <IconButton 
-        href={project.github}
-        target="_blank"
-        sx={{ 
-          color: '#f8fafc',
-          '&:hover': { color: '#3b82f6' }
-        }}
-      >
-        <GitHub />
-      </IconButton>
-      <IconButton 
-        href={project.demo}
-        target="_blank"
-        sx={{ 
-          color: '#f8fafc',
-          '&:hover': { color: '#3b82f6' }
-        }}
-      >
-        <Launch />
-      </IconButton>
-    </CardActions>
-  </Card>
+        </div>
+
+        {/* Features */}
+        <div className="space-y-2">
+          <h4 className="text-blue-200 font-medium">Key Features</h4>
+          <ul className="space-y-1">
+            {project.features.map((feature) => (
+              <li key={feature} className="text-blue-100/70 text-sm flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-400/60"></div>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Links */}
+        <div className="flex gap-3 pt-4">
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 hover:bg-blue-400/20 
+                     text-blue-300 rounded-lg transition-all duration-300"
+          >
+            <Github className="w-4 h-4" />
+            Code
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 hover:bg-blue-400/20 
+                     text-blue-300 rounded-lg transition-all duration-300"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Live Demo
+          </motion.a>
+        </div>
+      </div>
+    </div>
+  </div>
 );
 
 const Projects = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <Typography 
-          variant="h2" 
-          sx={{
-            textAlign: 'center',
-            mb: 6,
-            background: 'linear-gradient(45deg, #3b82f6, #8b5cf6)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
+    <div className="min-h-screen bg-gradient-to-b from-black via-indigo-600/20 to-black">
+      <div 
+        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_65%)]"
+        style={{ mixBlendMode: 'screen' }}
+      />
+      
+      <div className="container mx-auto px-4 py-16 relative">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
         >
-          My Projects
-        </Typography>
+          <h1 className="text-4xl md:text-5xl font-bold mb-16 bg-gradient-to-r from-blue-300 to-purple-300 text-transparent bg-clip-text text-center">
+            Featured Projects
+          </h1>
 
-        <Grid container spacing={4}>
-          {projects.map((project, index) => (
-            <Grid item xs={12} sm={6} lg={4} key={project.title}>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, idx) => (
               <motion.div
+                key={project.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: idx * 0.2 }}
               >
                 <ProjectCard project={project} />
               </motion.div>
-            </Grid>
-          ))}
-        </Grid>
-      </motion.div>
-    </Container>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </div>
   );
 };
 
