@@ -105,7 +105,7 @@ const ProfessionalSummary = () => {
         animate={{ opacity: 1, y: 0 }}
         className="text-xl text-blue-200/80 leading-relaxed max-w-3xl mx-auto text-center mb-12"
       >
-        A passionate Software Engineering Intern with expertise in full-stack development, AI integration, and creative problem-solving. Committed to building innovative solutions that make a positive impact on the world.
+        A passionate Software Engineering Intern with expertise in full-stack development, AI integration, and creative problem-solving. Committed to building innovative solutions that make a positive[...]
       </motion.p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -275,7 +275,7 @@ const Home = () => {
             </div>
           </section>
 
-          {/* Professional Summary Section */}
+          {/* About Me Section */}
           <section className="mb-24">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text">
               Professional Summary
@@ -286,25 +286,68 @@ const Home = () => {
             </div>
           </section>
 
-          {/* Let's Connect Section */}
-          <section className="bg-gradient-to-b from-black via-purple-900/20 to-black py-16">
-            <div className="container mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
-                Let's Connect
-              </h2>
-              <p className="text-xl text-blue-200 mb-8">
-                I'm always open to new opportunities and collaborations. Feel free to reach out!
-              </p>
-              <motion.button 
-                onClick={handleContact}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-500 hover:to-purple-500 transition-all duration-300"
-              >
-                Get in Touch
-              </motion.button>
-            </div>
-          </section>
+          {/* Contact Section */}
+          <section className="mb-24 relative">
+  {/* Floating orbs background */}
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-float" />
+    <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-float-delayed" />
+  </div>
+
+  <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-300 via-indigo-400 to-purple-400 text-transparent bg-clip-text">
+    Always Open to New Opportunities!
+  </h2>
+
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className="relative max-w-2xl mx-auto"
+  >
+    <div className="relative flex flex-col items-center bg-gradient-to-br from-blue-950/40 to-indigo-950/40 border border-blue-400/10 backdrop-blur-sm rounded-2xl p-8 space-y-6 shadow-lg">
+      {/* Gradient border glow */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-xl -z-10" />
+      
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="text-xl text-blue-100/90 leading-relaxed text-center"
+      >
+        I'm always excited to work with new technologies and collaborate on interesting projects. Feel free to connect with me!
+      </motion.p>
+
+      <motion.button
+        whileHover={{ 
+          scale: 1.05,
+          boxShadow: "0 0 20px rgba(147, 197, 253, 0.3)"
+        }}
+        whileTap={{ scale: 0.95 }}
+        onClick={handleContact}
+        className="px-8 py-4 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 
+          rounded-full hover:from-blue-400 hover:via-indigo-400 hover:to-purple-400 
+          transition-all duration-300 shadow-lg hover:shadow-blue-500/25 
+          text-white font-medium tracking-wide"
+      >
+        Let's Connect
+      </motion.button>
+    </div>
+  </motion.div>
+
+  <style jsx>{`
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    .animate-float-delayed {
+      animation: float 6s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+  `}</style>
+</section>
         </motion.div>
       </div>
 
