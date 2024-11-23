@@ -26,6 +26,21 @@ const theme = createTheme({
     background: {
       default: '#000000'
     }
+  },
+  // Remove any default padding/margin
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          margin: 0,
+          padding: 0,
+          boxSizing: 'border-box',
+          width: '100%',
+          maxWidth: '100%',
+          overflowX: 'hidden'
+        }
+      }
+    }
   }
 });
 
@@ -34,7 +49,15 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Box className="min-h-screen bg-gradient-to-b from-black via-blue-900/10 to-black">
+        <Box 
+          className="min-h-screen bg-gradient-to-b from-black via-blue-900/10 to-black"
+          sx={{
+            width: '100%',
+            margin: 0,
+            padding: 0,
+            overflow: 'hidden'
+          }}
+        >
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
