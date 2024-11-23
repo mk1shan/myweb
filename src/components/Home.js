@@ -42,20 +42,7 @@ const StarField = () => {
   );
 };
 
-const OrbitingPlanet = ({ delay = 0, size = 8, orbit = 20, color = "bg-blue-500" }) => {
-  return (
-    <div 
-      className="absolute rounded-full opacity-75"
-      style={{
-        width: `${size}px`,
-        height: `${size}px`,
-        animation: `orbit ${orbit}s infinite linear ${delay}s`
-      }}
-    >
-      <div className={`w-full h-full rounded-full ${color}`} />
-    </div>
-  );
-};
+
 
 const skillBoxes = [
     { 
@@ -135,11 +122,7 @@ const Home = () => {
                   transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`
                 }}
               />
-              <div className="absolute inset-0">
-                <OrbitingPlanet delay={0} size={12} orbit={15} color="bg-blue-400" />
-                <OrbitingPlanet delay={2} size={8} orbit={20} color="bg-purple-400" />
-                <OrbitingPlanet delay={4} size={10} orbit={25} color="bg-cyan-400" />
-              </div>
+              
               <img
                 src={bgImage}
                 alt="Profile"
