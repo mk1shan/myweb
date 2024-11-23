@@ -50,8 +50,8 @@ const Navbar = () => {
                                     to={page.path}
                                     className={`px-3 py-2 rounded-md font-medium text-sm lg:text-base ${
                                         isActive(page.path)
-                                            ? 'text-blue-500 bg-blue-500/10'
-                                            : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
+                                            ? 'text-blue-500'
+                                            : 'text-gray-300'
                                     }`}
                                 >
                                     {page.title}
@@ -62,7 +62,7 @@ const Navbar = () => {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={handleDrawerToggle}
-                            className="md:hidden p-2 rounded-md text-gray-400 hover:text-white hover:bg-slate-800/50"
+                            className="md:hidden p-2 rounded-md text-gray-400 hover:text-white"
                             aria-expanded={mobileOpen}
                         >
                             {mobileOpen ? <CloseIcon size={24} /> : <MenuIcon size={24} />}
@@ -71,26 +71,26 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Drawer */}
-<div
-    className={`fixed inset-0 z-50 transition-all ${
-        mobileOpen ? 'visible' : 'invisible'
-    }`}
->
-    {/* Backdrop */}
-    <div
-        className={`fixed inset-0 bg-slate-900 backdrop-blur-sm transition-opacity duration-300 ${
-            mobileOpen ? 'opacity-100' : 'opacity-0'
-        }`}
-        onClick={handleDrawerToggle}
-    />
-
-    {/* Drawer */}
+                <div
+                    className={`fixed inset-0 z-50 transition-all ${
+                        mobileOpen ? 'visible' : 'invisible'
+                    }`}
+                >
+                    {/* Backdrop */}
                     <div
-                        className={`fixed right-0 top-0 w-64 h-full bg-slate-900 shadow-lg border-l border-slate-800 transform transition-transform duration-300 ${
+                        className={`fixed inset-0 bg-black backdrop-blur-sm transition-opacity duration-300 ${
+                            mobileOpen ? 'opacity-70' : 'opacity-0'
+                        }`}
+                        onClick={handleDrawerToggle}
+                    />
+
+                    {/* Drawer */}
+                    <div
+                        className={`fixed right-0 top-0 w-64 h-full bg-gradient-to-b from-slate-900 to-slate-950 shadow-2xl border-l border-slate-700 transform transition-transform duration-300 ${
                             mobileOpen ? 'translate-x-0' : 'translate-x-full'
                         }`}
                     >
-                        <div className="p-4 border-b border-slate-800 flex justify-between">
+                        <div className="p-4 border-b border-slate-700 bg-slate-900/95 backdrop-blur-md flex justify-between">
                             <Link
                                 to="/"
                                 className="text-lg font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
@@ -100,21 +100,21 @@ const Navbar = () => {
                             </Link>
                             <button
                                 onClick={handleDrawerToggle}
-                                className="p-2 text-gray-400 hover:text-white hover:bg-slate-800/50"
+                                className="p-2 rounded-md text-gray-300"
                             >
                                 <CloseIcon size={24} />
                             </button>
                         </div>
 
-                        <nav className="px-4 py-4 space-y-2">
+                        <nav className="px-4 py-4 space-y-2 bg-slate-900/95">
                             {pages.map((page) => (
                                 <Link
                                     key={page.title}
                                     to={page.path}
                                     className={`block px-3 py-2 rounded-md font-medium ${
                                         isActive(page.path)
-                                            ? 'text-blue-500 bg-blue-500/10'
-                                            : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
+                                            ? 'text-blue-500'
+                                            : 'text-gray-200'
                                     }`}
                                     onClick={handleDrawerToggle}
                                 >
