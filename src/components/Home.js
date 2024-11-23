@@ -105,7 +105,7 @@ const ProfessionalSummary = () => {
         animate={{ opacity: 1, y: 0 }}
         className="text-xl text-blue-200/80 leading-relaxed max-w-3xl mx-auto text-center mb-12"
       >
-        A passionate Software Engineering Intern with expertise in full-stack development, AI integration, and creative problem-solving. Committed to building innovative solutions that make a positive[...]
+        A passionate Software Engineering Intern with expertise in full-stack development, AI integration, and creative problem-solving. Committed to building innovative solutions that make a positive.
       </motion.p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
