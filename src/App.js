@@ -8,6 +8,7 @@ import Certificates from './components/Certificates';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import ArticlesPage from './components/ArticlesPage';
 
 const theme = createTheme({
   palette: {
@@ -42,6 +43,7 @@ function App() {
             <Route path="/skills" element={<Skills />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/articles" element={<ArticlesPage />} />
           </Routes>
         </Box>
       </Router>

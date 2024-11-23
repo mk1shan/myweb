@@ -1,23 +1,6 @@
 import React, { useState } from 'react';
-import { 
-    AppBar, 
-    Box, 
-    Toolbar, 
-    IconButton, 
-    Typography, 
-    Menu, 
-    Container, 
-    Button, 
-    MenuItem,
-    Drawer,
-    List,
-    ListItem,
-    ListItemText,
-    useTheme,
-    useMediaQuery
-} from '@mui/material';
-import { Menu as MenuIcon, X as CloseIcon } from 'react-feather';
 import { Link, useLocation } from 'react-router-dom';
+import { Menu as MenuIcon, X as CloseIcon } from 'lucide-react';
 
 const pages = [
     { title: 'Home', path: '/' },
@@ -30,161 +13,99 @@ const pages = [
 
 const Navbar = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const location = useLocation();
+
+    const isActive = (path) => location.pathname === path;
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
 
-    const isActive = (path) => {
-        return location.pathname === path;
-    };
-
-    // Mobile drawer content
-    const drawer = (
-        <Box 
-            onClick={handleDrawerToggle}
-            sx={{ 
-                width: 250,
-                height: '100%',
-                bgcolor: 'background.paper',
-                pt: 8
-            }}
-        >
-            <List>
-                {pages.map((page) => (
-                    <ListItem 
-                        key={page.title}
-                        component={Link}
-                        to={page.path}
-                        sx={{
-                            color: isActive(page.path) ? 'primary.main' : 'text.primary',
-                            '&:hover': {
-                                bgcolor: 'rgba(59, 130, 246, 0.08)',
-                            },
-                            borderRight: isActive(page.path) ? 3 : 0,
-                            borderColor: 'primary.main'
-                        }}
-                    >
-                        <ListItemText 
-                            primary={page.title}
-                            primaryTypographyProps={{
-                                fontSize: '1rem',
-                                fontWeight: isActive(page.path) ? 600 : 400
-                            }}
-                        />
-                    </ListItem>
-                ))}
-            </List>
-        </Box>
-    );
-
     return (
-        <AppBar 
-            position="sticky"
-            elevation={0}
-            sx={{
-                backdropFilter: 'blur(10px)',
-                backgroundColor: 'rgba(15, 23, 42, 0.8)',
-                borderBottom: '1px solid',
-                borderColor: 'divider'
-            }}
-        >
-            <Container maxWidth="xl">
-                <Toolbar disableGutters sx={{ height: 64 }}>
-                    {/* Logo/Brand - visible on all screens */}
-                    <Typography
-                        variant="h6"
-                        component={Link}
-                        to="/"
-                        sx={{
-                            mr: 2,
-                            display: 'flex',
-                            fontWeight: 700,
-                            color: 'text.primary',
-                            textDecoration: 'none',
-                            background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                        }}
-                    >
-                        MUDIPA KISHAN
-                    </Typography>
-
-                    {/* Mobile menu icon */}
-                    {isMobile && (
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            edge="start"
-                            onClick={handleDrawerToggle}
-                            sx={{ ml: 'auto' }}
+        <div className="sticky top-0 z-50 w-full">
+            <div className="w-full backdrop-blur-md bg-slate-900/80 border-b border-slate-800">
+                {/* Main Navbar */}
+                <div className="flex h-16 items-center justify-between px-4">
+                    {/* Logo - Left Side */}
+                    <div className="w-[200px]">
+                        <Link 
+                            to="/" 
+                            className="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
                         >
-                            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-                        </IconButton>
-                    )}
+                            MUDIPA KISHAN
+                        </Link>
+                    </div>
 
-                    {/* Desktop menu */}
-                    {!isMobile && (
-                        <Box sx={{ ml: 'auto', display: 'flex', gap: 1 }}>
+                    {/* Desktop Navigation - Centered */}
+                    <div className="hidden md:flex items-center justify-center flex-1">
+                        <div className="flex space-x-6">
                             {pages.map((page) => (
-                                <Button
+                                <Link
                                     key={page.title}
-                                    component={Link}
                                     to={page.path}
-                                    sx={{
-                                        my: 2,
-                                        color: isActive(page.path) ? 'primary.main' : 'text.primary',
-                                        display: 'block',
-                                        fontWeight: isActive(page.path) ? 600 : 400,
-                                        position: 'relative',
-                                        '&:after': {
-                                            content: '""',
-                                            position: 'absolute',
-                                            width: isActive(page.path) ? '100%' : '0%',
-                                            height: '2px',
-                                            bottom: 0,
-                                            left: '0',
-                                            backgroundColor: 'primary.main',
-                                            transition: 'width 0.3s ease',
-                                        },
-                                        '&:hover:after': {
-                                            width: '100%',
+                                    className={`px-3 py-2 text-sm font-medium
+                                        ${isActive(page.path) 
+                                            ? 'text-blue-500 font-semibold' 
+                                            : 'text-gray-300 hover:text-white'
                                         }
-                                    }}
+                                        transition-colors duration-200
+                                    `}
                                 >
                                     {page.title}
-                                </Button>
+                                </Link>
                             ))}
-                        </Box>
-                    )}
-                </Toolbar>
-            </Container>
+                        </div>
+                    </div>
 
-            {/* Mobile drawer */}
-            <Drawer
-                variant="temporary"
-                anchor="right"
-                open={mobileOpen}
-                onClose={handleDrawerToggle}
-                ModalProps={{
-                    keepMounted: true, // Better mobile performance
-                }}
-                sx={{
-                    display: { xs: 'block', md: 'none' },
-                    '& .MuiDrawer-paper': {
-                        boxSizing: 'border-box',
-                        width: 250,
-                        backgroundColor: 'background.paper',
-                        backgroundImage: 'none',
-                    },
-                }}
-            >
-                {drawer}
-            </Drawer>
-        </AppBar>
+                    {/* Right side spacer to balance logo */}
+                    <div className="w-[200px] flex justify-end">
+                        {/* Mobile menu button */}
+                        <div className="md:hidden">
+                            <button
+                                onClick={handleDrawerToggle}
+                                className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800/50"
+                            >
+                                {mobileOpen ? <CloseIcon size={24} /> : <MenuIcon size={24} />}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Mobile Navigation Drawer */}
+                {mobileOpen && (
+                    <div className="md:hidden">
+                        <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm" onClick={handleDrawerToggle} />
+                        <div className="fixed right-0 top-0 w-64 h-full bg-slate-900 border-l border-slate-800 p-6 overflow-y-auto">
+                            <div className="flex justify-end mb-6">
+                                <button
+                                    onClick={handleDrawerToggle}
+                                    className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800/50"
+                                >
+                                    <CloseIcon size={24} />
+                                </button>
+                            </div>
+                            <nav className="space-y-2">
+                                {pages.map((page) => (
+                                    <Link
+                                        key={page.title}
+                                        to={page.path}
+                                        onClick={handleDrawerToggle}
+                                        className={`block px-4 py-2 rounded-lg text-sm font-medium
+                                            ${isActive(page.path)
+                                                ? 'text-blue-500 bg-blue-500/10'
+                                                : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
+                                            }
+                                        `}
+                                    >
+                                        {page.title}
+                                    </Link>
+                                ))}
+                            </nav>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
     );
 };
 

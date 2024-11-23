@@ -8,19 +8,16 @@ import {
   Linkedin,
   Mail,
   Code,
-  Database,
-  Cloud,
-  Layout,
-  Server,
-  Shield,
-  Video,
-  Box as BoxIcon,
+  BoxIcon,
   Star,
   BookOpen,
-  Activity
+  Activity,
+  Brain,
+  Globe,
+  Video,
+  Box
 } from 'lucide-react';
 
-// StarField and OrbitingPlanet components remain the same
 const StarField = () => {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden">
@@ -42,8 +39,6 @@ const StarField = () => {
   );
 };
 
-
-
 const skillBoxes = [
     { 
         icon: <Terminal className="w-8 h-8" />, 
@@ -58,9 +53,9 @@ const skillBoxes = [
         gradient: 'from-blue-600 to-cyan-500'
     },
     { 
-        icon: <BoxIcon className="w-8 h-8" />, 
+        icon: <Box className="w-8 h-8" />, 
         title: '3D Design',
-        desc: 'Blender, 3D Modeling, Animation',
+        desc: 'Blender, 3D Modeling',
         gradient: 'from-cyan-500 to-teal-500'
     },
     { 
@@ -82,6 +77,58 @@ const skillBoxes = [
         gradient: 'from-yellow-500 to-orange-500'
     }
 ];
+
+const ProfessionalSummary = () => {
+  const summaryPoints = [
+    {
+      icon: <Brain className="w-8 h-8" />,
+      title: "Innovation Drive",
+      content: "Passionate about leveraging cutting-edge technologies to solve complex problems and create intuitive user experiences."
+    },
+    {
+      icon: <Globe className="w-8 h-8" />,
+      title: "Global Perspective",
+      content: "Experience working with diverse, international teams and contributing to open-source projects worldwide."
+    },
+    {
+      icon: <Rocket className="w-8 h-8" />,
+      title: "Rapid Learning",
+      content: "Quick to adapt to new technologies and frameworks, with a proven track record of learning and implementing new skills effectively."
+    }
+  ];
+
+  return (
+    <div className="space-y-8">
+      <motion.p 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-xl text-blue-200/80 leading-relaxed max-w-3xl mx-auto text-center mb-12"
+      >
+        A passionate Software Engineering Intern with expertise in full-stack development, AI integration, and creative problem-solving. Committed to building innovative solutions that make a positive impact.
+      </motion.p>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {summaryPoints.map((point, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.2 }}
+            className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-xl p-6 border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300"
+          >
+            <div className="flex flex-col items-center text-center space-y-4">
+              <div className="p-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500">
+                {point.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-blue-100">{point.title}</h3>
+              <p className="text-blue-200/70">{point.content}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -186,55 +233,59 @@ const Home = () => {
           </div>
 
           {/* Expertise Section */}
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text">
-            My Expertise
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {skillBoxes.map((skill, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="group p-6 rounded-2xl bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-500/10 backdrop-blur-sm hover:border-blue-500/30 transition-all duration-500"
-              >
-                <div className="space-y-4">
-                  <div className={`p-3 rounded-xl bg-gradient-to-r ${skill.gradient} w-fit group-hover:scale-110 transition-transform duration-300`}>
-                    {skill.icon}
+          <section className="mb-24">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text">
+              My Expertise
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {skillBoxes.map((skill, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -8 }}
+                  className="group p-6 rounded-2xl bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-500/10 backdrop-blur-sm hover:border-blue-500/30 transition-all duration-500"
+                >
+                  <div className="space-y-4">
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${skill.gradient} w-fit group-hover:scale-110 transition-transform duration-300`}>
+                      {skill.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold text-blue-100">
+                      {skill.title}
+                    </h3>
+                    <p className="text-blue-200/70">
+                      {skill.desc}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-semibold text-blue-100">
-                    {skill.title}
-                  </h3>
-                  <p className="text-blue-200/70">
-                    {skill.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* About Me Section */}
+          <section className="mb-24">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text">
+              Professional summary
+            </h2>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent pointer-events-none" />
+              <ProfessionalSummary />
+            </div>
+          </section>
         </motion.div>
       </div>
 
       <style jsx>{`
         @keyframes twinkle {
-    0%, 100% { 
-      opacity: 0.1; /* Reduced from 0.2 */
-    }
-    50% { 
-      opacity: 0.5; /* Reduced from 1 */
-    }
-  }
-  
-  @keyframes orbit {
-    from { 
-      transform: rotate(0deg) translateX(60px) rotate(0deg); /* Reduced from 100px */
-    }
-    to { 
-      transform: rotate(360deg) translateX(60px) rotate(-360deg);
-    }
-  }
+          0%, 100% { opacity: 0.1; }
+          50% { opacity: 0.5; }
+        }
+        
+        @keyframes orbit {
+          from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+          to { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+        }
       `}</style>
     </div>
   );

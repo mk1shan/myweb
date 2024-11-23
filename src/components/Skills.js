@@ -56,7 +56,6 @@ const skillCategories = [
     skills: [
       { name: "OOP", level: 85 },
       { name: "DSA", level: 80 },
-      
     ]
   },
   {
@@ -71,13 +70,39 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-indigo-600/20 to-black">
+    <div className="min-h-screen relative bg-gradient-to-b from-black via-indigo-600/20 to-black overflow-hidden">
+      {/* Starry background */}
+      <div className="fixed inset-0">
+        {[...Array(100)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white animate-twinkle"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 2 + 1}px`,
+              height: `${Math.random() * 2 + 1}px`,
+              opacity: Math.random() * 0.7,
+              animationDelay: `${Math.random() * 8}s`,
+              animationDuration: `${Math.random() * 3 + 2}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Glowing orbs */}
+      <div className="fixed inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
+      </div>
+
+      {/* Radial gradient overlay */}
       <div 
         className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_65%)]"
         style={{ mixBlendMode: 'screen' }}
       />
       
-      <div className="container mx-auto px-4 py-16 relative">
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -138,6 +163,16 @@ const Skills = () => {
           </div>
         </motion.div>
       </div>
+
+      <style jsx>{`
+        @keyframes twinkle {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.8; }
+        }
+        .animate-twinkle {
+          animation: twinkle infinite ease-in-out;
+        }
+      `}</style>
     </div>
   );
 };

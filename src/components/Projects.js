@@ -108,7 +108,6 @@ const ProjectCard = ({ project }) => (
                     backdrop-blur-sm border border-blue-400/20 
                     group-hover:border-blue-300/40 transition-all duration-300
                     overflow-hidden">
-      {/* Header */}
       <div className={`bg-gradient-to-r ${project.gradient} p-4 flex items-center justify-between`}>
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-white/10">
@@ -123,13 +122,11 @@ const ProjectCard = ({ project }) => (
         </div>
       </div>
 
-      {/* Content */}
       <div className="p-6 space-y-4">
         <p className="text-blue-100/80 leading-relaxed">
           {project.description}
         </p>
 
-        {/* Tech Stack */}
         <div className="flex flex-wrap gap-2">
           {project.mainTech.map((tech) => (
             <div key={tech} 
@@ -140,7 +137,6 @@ const ProjectCard = ({ project }) => (
           ))}
         </div>
 
-        {/* Features */}
         <div className="space-y-2">
           <h4 className="text-blue-200 font-medium">Key Features</h4>
           <ul className="space-y-1">
@@ -153,7 +149,6 @@ const ProjectCard = ({ project }) => (
           </ul>
         </div>
 
-        {/* Links */}
         <div className="flex gap-3 pt-4">
           <motion.a
             whileHover={{ scale: 1.05 }}
@@ -187,19 +182,39 @@ const ProjectCard = ({ project }) => (
 
 const Projects = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-indigo-600/20 to-black">
-      <div 
-        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_65%)]"
-        style={{ mixBlendMode: 'screen' }}
-      />
-      
-      <div className="container mx-auto px-4 py-16 relative">
+    <div className="min-h-screen relative bg-gradient-to-b from-black via-blue-900/30 to-black overflow-hidden">
+      {/* Starry background */}
+      <div className="fixed inset-0">
+        {[...Array(100)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white animate-twinkle"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 2 + 1}px`,
+              height: `${Math.random() * 2 + 1}px`,
+              opacity: Math.random() * 0.7,
+              animationDelay: `${Math.random() * 8}s`,
+              animationDuration: `${Math.random() * 3 + 2}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Glowing orbs */}
+      <div className="fixed inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-16 bg-gradient-to-r from-blue-300 to-purple-300 text-transparent bg-clip-text text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-16 bg-gradient-to-r from-blue-300 via-purple-300 to-cyan-300 text-transparent bg-clip-text text-center">
             Featured Projects
           </h1>
 
@@ -217,6 +232,16 @@ const Projects = () => {
           </div>
         </motion.div>
       </div>
+
+      <style jsx>{`
+        @keyframes twinkle {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.8; }
+        }
+        .animate-twinkle {
+          animation: twinkle infinite ease-in-out;
+        }
+      `}</style>
     </div>
   );
 };
