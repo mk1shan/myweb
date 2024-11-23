@@ -105,7 +105,7 @@ const ProfessionalSummary = () => {
         animate={{ opacity: 1, y: 0 }}
         className="text-xl text-blue-200/80 leading-relaxed max-w-3xl mx-auto text-center mb-12"
       >
-        A passionate Software Engineering Intern with expertise in full-stack development, AI integration, and creative problem-solving. Committed to building innovative solutions that make a positive impact.
+        A passionate Software Engineering Intern with expertise in full-stack development, AI integration, and creative problem-solving. Committed to building innovative solutions that make a positive impact on the world.
       </motion.p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -275,7 +275,7 @@ const Home = () => {
             </div>
           </section>
 
-          {/* About Me Section */}
+          {/* Professional Summary Section */}
           <section className="mb-24">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text">
               Professional Summary
@@ -283,6 +283,26 @@ const Home = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent pointer-events-none" />
               <ProfessionalSummary />
+            </div>
+          </section>
+
+          {/* Let's Connect Section */}
+          <section className="bg-gradient-to-b from-black via-purple-900/20 to-black py-16">
+            <div className="container mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
+                Let's Connect
+              </h2>
+              <p className="text-xl text-blue-200 mb-8">
+                I'm always open to new opportunities and collaborations. Feel free to reach out!
+              </p>
+              <motion.button 
+                onClick={handleContact}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-500 hover:to-purple-500 transition-all duration-300"
+              >
+                Get in Touch
+              </motion.button>
             </div>
           </section>
         </motion.div>
