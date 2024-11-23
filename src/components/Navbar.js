@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu as MenuIcon, X as CloseIcon } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const pages = [
     { title: 'Home', path: '/' },
@@ -14,19 +13,9 @@ const pages = [
 
 const Navbar = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
 
     const isActive = (path) => location.pathname === path;
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -37,96 +26,112 @@ const Navbar = () => {
         setMobileOpen(false);
     }, [location]);
 
-    return (
-        <div className="fixed top-0 z-50 w-full">
-            <motion.div 
-                initial={{ y: -100 }}
-                animate={{ y: 0 }}
-                className={`w-full backdrop-blur-md border-b transition-all duration-300 ${
-                    scrolled 
-                        ? 'bg-slate-900/90 border-slate-700/50' 
-                        : 'bg-transparent border-transparent'
-                }`}
-            >
-                {/* Desktop Navigation */}
-                <div className="max-w-7xl mx-auto">
-                    <div className="flex h-16 items-center justify-between px-4">
-                        {/* Logo/Brand */}
-                        <Link to="/" className="flex-shrink-0">
-                            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
-                                MK
-                            </span>
-                        </Link>
+    // Handle body scroll when mobile menu is open
+    useEffect(() => {
+        if (mobileOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [mobileOpen]);
 
-                        {/* Desktop Menu */}
-                        <div className="hidden md:flex items-center space-x-8">
+    return (
+        <div className="sticky top-0 z-50 w-full">
+            <div className="w-full backdrop-blur-md bg-slate-900/80 border-b border-slate-800">
+                {/* Main Navbar */}
+                <div className="flex h-16 items-center justify-between px-4">
+                    {/* Logo - Left Side */}
+                    <div className="w-[200px] lg:w-[200px] md:w-[180px] sm:w-[160px]">
+                        <Link 
+                            to="/" 
+                            className="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent whitespace-nowrap"
+                        >
+                            MUDIPA KISHAN
+                        </Link>
+                    </div>
+
+                    {/* Desktop Navigation - Centered */}
+                    <div className="hidden md:flex items-center justify-center flex-1">
+                        <div className="flex space-x-6">
                             {pages.map((page) => (
                                 <Link
-                                    key={page.path}
+                                    key={page.title}
                                     to={page.path}
-                                    className={`relative px-3 py-2 text-sm font-medium transition-colors ${
-                                        isActive(page.path)
-                                            ? 'text-blue-400'
-                                            : 'text-gray-300 hover:text-blue-400'
-                                    }`}
+                                    className={`px-3 py-2 text-sm font-medium
+                                        ${isActive(page.path) 
+                                            ? 'text-blue-500 font-semibold' 
+                                            : 'text-gray-300 hover:text-white'
+                                        }
+                                        transition-colors duration-200
+                                    `}
                                 >
                                     {page.title}
-                                    {isActive(page.path) && (
-                                        <motion.div
-                                            layoutId="navbar-indicator"
-                                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-400"
-                                            initial={false}
-                                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                                        />
-                                    )}
                                 </Link>
                             ))}
                         </div>
+                    </div>
 
-                        {/* Mobile Menu Button */}
+                    {/* Right side spacer to balance logo */}
+                    <div className="w-[200px] lg:w-[200px] md:w-[180px] sm:w-[160px] flex justify-end">
+                        {/* Mobile menu button */}
                         <div className="md:hidden">
                             <button
                                 onClick={handleDrawerToggle}
-                                className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800"
+                                className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800/50"
+                                aria-label="Toggle menu"
                             >
-                                {mobileOpen ? (
-                                    <CloseIcon className="w-6 h-6" />
-                                ) : (
-                                    <MenuIcon className="w-6 h-6" />
-                                )}
+                                {mobileOpen ? <CloseIcon size={24} /> : <MenuIcon size={24} />}
                             </button>
                         </div>
                     </div>
                 </div>
 
-                {/* Mobile Navigation */}
-                <AnimatePresence>
-                    {mobileOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="md:hidden border-t border-slate-800"
+                {/* Mobile Navigation Drawer */}
+                {mobileOpen && (
+                    <div className="md:hidden fixed inset-0 z-50">
+                        <div 
+                            className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm" 
+                            onClick={handleDrawerToggle}
+                            aria-hidden="true"
+                        />
+                        <div 
+                            className="fixed right-0 top-0 w-64 h-full bg-slate-900 border-l border-slate-800 p-6 overflow-y-auto"
+                            role="dialog"
+                            aria-modal="true"
                         >
-                            <div className="px-2 pt-2 pb-3 space-y-1 bg-slate-900/95 backdrop-blur-md">
+                            <div className="flex justify-end mb-6">
+                                <button
+                                    onClick={handleDrawerToggle}
+                                    className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800/50"
+                                    aria-label="Close menu"
+                                >
+                                    <CloseIcon size={24} />
+                                </button>
+                            </div>
+                            <nav className="space-y-2">
                                 {pages.map((page) => (
                                     <Link
-                                        key={page.path}
+                                        key={page.title}
                                         to={page.path}
-                                        className={`block px-3 py-2 rounded-lg text-base font-medium transition-colors ${
-                                            isActive(page.path)
-                                                ? 'bg-blue-500/10 text-blue-400'
-                                                : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-                                        }`}
+                                        onClick={handleDrawerToggle}
+                                        className={`block px-4 py-2 rounded-lg text-sm font-medium
+                                            ${isActive(page.path)
+                                                ? 'text-blue-500 bg-blue-500/10'
+                                                : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
+                                            }
+                                        `}
                                     >
                                         {page.title}
                                     </Link>
                                 ))}
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </motion.div>
+                            </nav>
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
