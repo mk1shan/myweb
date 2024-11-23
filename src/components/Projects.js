@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaGithub } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import {
   Github,
@@ -230,6 +231,32 @@ const Projects = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* GitHub View More Projects Button */}
+          <motion.div 
+            className="flex justify-center mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: projects.length * 0.2 }}
+          >
+            <motion.a
+              href="https://github.com/mk1shan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 
+                       rounded-full hover:from-blue-500 hover:to-purple-500 transition-all duration-300
+                       shadow-lg hover:shadow-blue-500/25 hover:-translate-y-1"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Github className="w-6 h-6" />
+              <span className="text-lg font-semibold">View More Projects</span>
+              <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center
+                            group-hover:bg-white/20 transition-all duration-300">
+                <ExternalLink className="w-4 h-4" />
+              </div>
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
 
