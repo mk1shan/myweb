@@ -17,122 +17,115 @@ const Navbar = () => {
 
     const isActive = (path) => location.pathname === path;
 
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
+    const handleDrawerToggle = () => setMobileOpen((prev) => !prev);
 
-    // Close mobile menu when route changes
+    // Close mobile menu on route change
     useEffect(() => {
         setMobileOpen(false);
     }, [location]);
 
-    // Handle body scroll when mobile menu is open
+    // Prevent scrolling when the menu is open
     useEffect(() => {
-        if (mobileOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
+        document.body.style.overflow = mobileOpen ? 'hidden' : 'unset';
     }, [mobileOpen]);
 
     return (
-        <div className="sticky top-0 z-50 w-full">
+        <nav className="sticky top-0 z-50 w-full">
             <div className="w-full backdrop-blur-md bg-slate-900/80 border-b border-slate-800">
-                {/* Main Navbar */}
-                <div className="flex h-16 items-center justify-between px-4">
-                    {/* Logo - Left Side */}
-                    <div className="w-[200px] lg:w-[200px] md:w-[180px] sm:w-[160px]">
-                        <Link 
-                            to="/" 
-                            className="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent whitespace-nowrap"
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex h-16 items-center justify-between">
+                        {/* Logo */}
+                        <Link
+                            to="/"
+                            className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent hover:opacity-90 transition-opacity"
                         >
                             MUDIPA KISHAN
                         </Link>
-                    </div>
 
-                    {/* Desktop Navigation - Centered */}
-                    <div className="hidden md:flex items-center justify-center flex-1">
-                        <div className="flex space-x-6">
+                        {/* Desktop Links */}
+                        <div className="hidden md:flex space-x-6">
                             {pages.map((page) => (
                                 <Link
                                     key={page.title}
                                     to={page.path}
-                                    className={`px-3 py-2 text-sm font-medium
-                                        ${isActive(page.path) 
-                                            ? 'text-blue-500 font-semibold' 
-                                            : 'text-gray-300 hover:text-white'
-                                        }
-                                        transition-colors duration-200
-                                    `}
+                                    className={`px-3 py-2 rounded-md font-medium text-sm lg:text-base ${
+                                        isActive(page.path)
+                                            ? 'text-blue-500 bg-blue-500/10'
+                                            : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
+                                    }`}
                                 >
                                     {page.title}
                                 </Link>
                             ))}
                         </div>
-                    </div>
 
-                    {/* Right side spacer to balance logo */}
-                    <div className="w-[200px] lg:w-[200px] md:w-[180px] sm:w-[160px] flex justify-end">
-                        {/* Mobile menu button */}
-                        <div className="md:hidden">
-                            <button
-                                onClick={handleDrawerToggle}
-                                className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800/50"
-                                aria-label="Toggle menu"
-                            >
-                                {mobileOpen ? <CloseIcon size={24} /> : <MenuIcon size={24} />}
-                            </button>
-                        </div>
+                        {/* Mobile Menu Button */}
+                        <button
+                            onClick={handleDrawerToggle}
+                            className="md:hidden p-2 rounded-md text-gray-400 hover:text-white hover:bg-slate-800/50"
+                            aria-expanded={mobileOpen}
+                        >
+                            {mobileOpen ? <CloseIcon size={24} /> : <MenuIcon size={24} />}
+                        </button>
                     </div>
                 </div>
 
-                {/* Mobile Navigation Drawer */}
-                {mobileOpen && (
-                    <div className="md:hidden fixed inset-0 z-50">
-                        <div 
-                            className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm" 
-                            onClick={handleDrawerToggle}
-                            aria-hidden="true"
-                        />
-                        <div 
-                            className="fixed right-0 top-0 w-64 h-full bg-slate-900 border-l border-slate-800 p-6 overflow-y-auto"
-                            role="dialog"
-                            aria-modal="true"
-                        >
-                            <div className="flex justify-end mb-6">
-                                <button
-                                    onClick={handleDrawerToggle}
-                                    className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800/50"
-                                    aria-label="Close menu"
-                                >
-                                    <CloseIcon size={24} />
-                                </button>
-                            </div>
-                            <nav className="space-y-2">
-                                {pages.map((page) => (
-                                    <Link
-                                        key={page.title}
-                                        to={page.path}
-                                        onClick={handleDrawerToggle}
-                                        className={`block px-4 py-2 rounded-lg text-sm font-medium
-                                            ${isActive(page.path)
-                                                ? 'text-blue-500 bg-blue-500/10'
-                                                : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
-                                            }
-                                        `}
-                                    >
-                                        {page.title}
-                                    </Link>
-                                ))}
-                            </nav>
+                {/* Mobile Drawer */}
+<div
+    className={`fixed inset-0 z-50 transition-all ${
+        mobileOpen ? 'visible' : 'invisible'
+    }`}
+>
+    {/* Backdrop */}
+    <div
+        className={`fixed inset-0 bg-slate-900 backdrop-blur-sm transition-opacity duration-300 ${
+            mobileOpen ? 'opacity-100' : 'opacity-0'
+        }`}
+        onClick={handleDrawerToggle}
+    />
+
+    {/* Drawer */}
+                    <div
+                        className={`fixed right-0 top-0 w-64 h-full bg-slate-900 shadow-lg border-l border-slate-800 transform transition-transform duration-300 ${
+                            mobileOpen ? 'translate-x-0' : 'translate-x-full'
+                        }`}
+                    >
+                        <div className="p-4 border-b border-slate-800 flex justify-between">
+                            <Link
+                                to="/"
+                                className="text-lg font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
+                                onClick={handleDrawerToggle}
+                            >
+                                MUDIPA KISHAN
+                            </Link>
+                            <button
+                                onClick={handleDrawerToggle}
+                                className="p-2 text-gray-400 hover:text-white hover:bg-slate-800/50"
+                            >
+                                <CloseIcon size={24} />
+                            </button>
                         </div>
+
+                        <nav className="px-4 py-4 space-y-2">
+                            {pages.map((page) => (
+                                <Link
+                                    key={page.title}
+                                    to={page.path}
+                                    className={`block px-3 py-2 rounded-md font-medium ${
+                                        isActive(page.path)
+                                            ? 'text-blue-500 bg-blue-500/10'
+                                            : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
+                                    }`}
+                                    onClick={handleDrawerToggle}
+                                >
+                                    {page.title}
+                                </Link>
+                            ))}
+                        </nav>
                     </div>
-                )}
+                </div>
             </div>
-        </div>
+        </nav>
     );
 };
 
