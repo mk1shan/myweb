@@ -87,8 +87,8 @@ const About = () => {
                 <h2 className="text-2xl font-semibold mb-6 text-blue-100">Contact Information</h2>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-blue-200">
-                    <MapPin className="w-5 h-5" />
-                    <span>82248</span>
+                    
+                  
                   </div>
                   <div className="flex items-center gap-3 text-blue-200">
                     <Mail className="w-5 h-5" />
