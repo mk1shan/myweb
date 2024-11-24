@@ -73,8 +73,8 @@ const skillBoxes = [
     },
     { 
         icon: <BookOpen className="w-8 h-8" />,
-        title: 'Mental Health Projects',
-        desc: 'Healthcare Solutions, Research Analysis',
+        title: 'Web Design & Development',
+        desc: 'Full-stack web development, WordPress, React, Custom themes & plugins',
         gradient: 'from-yellow-500 to-orange-500'
     }
 ];
