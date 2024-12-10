@@ -1,0 +1,191 @@
+# Code Citations
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) =>
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} m
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <motion
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <motion.div
+                
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <motion.div
+                                initial={{ opacity
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <motion.div
+                                initial={{ opacity: 0,
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1,
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                
+```
+
+
+## License: unknown
+https://github.com/jameschapman19/personal/blob/fd1dba6e7a705dad188ea6fb70a0d65fec6884aa/src/app/portfolio/page.tsx
+
+```
+, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{
+```
+
