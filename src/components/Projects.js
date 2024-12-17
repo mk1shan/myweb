@@ -7,7 +7,6 @@ import {
   Database,
   Store,
   Stethoscope,
-  GraduationCap,
   Music2,
   Heart,
   Container,
@@ -43,14 +42,15 @@ const projects = [
     description: "Intelligent inventory management system with real-time analytics and predictive stock management.",
     icon: <Store className="w-6 h-6" />,
     gradient: "from-blue-600 to-cyan-600",
-    mainTech: ["React", "Spring", "MySQL", "API"],
+    mainTech: ["Java", "MySQL"],
     features: [
+      "Manage categories, users, customers, and orders",
       "Real-time Analytics Dashboard",
       "Predictive Stock Management",
       "Multi-branch Support",
       "Advanced Reporting"
     ],
-    github: "https://github.com/mk1shan/stockwise",
+    github: "https://github.com/mk1shan/Inventory--Management-system",
     live: "#",
     priority: "Featured"
   },
@@ -59,14 +59,34 @@ const projects = [
     description: "AI-powered mental health platform with real-time emotion analysis and support system.",
     icon: <Heart className="w-6 h-6" />,
     gradient: "from-purple-600 to-pink-600",
-    mainTech: ["Python", "AI", "MongoDB", "React"],
+    mainTech: ["RASA framework", "Python", "React", "Firebase", "LLM (cohere)"],
     features: [
-      "Emotion Analysis AI",
-      "24/7 Support System",
-      "Professional Network",
+      "Selfcare plan tailored to the user's mental health level and suggest songs and movies",
+      "Measures and monitors depression, anxiety, and stress levels",
+      "Mini-game for stress relief and a diary to log emotions",
       "Progress Tracking"
     ],
-    github: "https://github.com/mk1shan/emocare",
+    github: "https://github.com/mk1shan/mental-health-project",
+    live: "#",
+    priority: "Featured"
+  },
+  {
+    title: "Skillshare",
+    description: "Skillshare platform for peer groups",
+    icon: <Heart className="w-6 h-6" />,
+    gradient: "from-purple-600 to-pink-600",
+    mainTech: ["React", "Firebase", "Node.js", "Express.js"],
+    features: [
+      "Users can share their ideas about specific topics",
+      "Users can make their profile by including their skills and personal details",
+      "Users can post articles about their skillful areas and all users can read them",
+      "Users can search other users by name, and they can see their profiles with their skills",
+      "Feed section",
+      "Profile section",
+      "Article section",
+      "Search section"
+    ],
+    github: "https://github.com/mk1shan/skill_share",
     live: "#",
     priority: "Featured"
   },
@@ -75,40 +95,27 @@ const projects = [
     description: "Modern dental clinic management system with integrated patient care workflows.",
     icon: <Stethoscope className="w-6 h-6" />,
     gradient: "from-cyan-600 to-teal-600",
-    mainTech: ["Node.js", "MongoDB", "React", "API"],
+    mainTech: ["HTML", "CSS", "JavaScript", "PHP"],
     features: [
+      "Manage Doctor details, patient details, and user details",
       "Smart Scheduling",
       "Treatment Tracking",
       "Patient Portal",
       "Billing System"
     ],
-    github: "https://github.com/mk1shan/tiny-teeth",
+    github: "https://github.com/mk1shan/Denatl-Hospital-Mnagaement-System",
     live: "#"
   },
-  {
-    title: "Music Stream",
-    description: "Modern music streaming platform with personalized recommendations and playlist management.",
-    icon: <Music2 className="w-6 h-6" />,
-    gradient: "from-indigo-600 to-purple-600",
-    mainTech: ["React", "Node.js", "MongoDB", "API"],
-    features: [
-      "Personalized Playlists",
-      "Real-time Streaming",
-      "Social Sharing",
-      "Artist Dashboard"
-    ],
-    github: "https://github.com/mk1shan/music-stream",
-    live: "#"
-  }
+  
 ];
 
 const ProjectCard = ({ project }) => (
-  <div className="group relative">
+  <div className="group relative h-full">
     <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-500"></div>
     <div className="relative bg-gradient-to-br from-blue-900/40 to-purple-900/40 rounded-xl 
                     backdrop-blur-sm border border-blue-400/20 
                     group-hover:border-blue-300/40 transition-all duration-300
-                    overflow-hidden">
+                    overflow-hidden flex flex-col justify-between h-full">
       <div className={`bg-gradient-to-r ${project.gradient} p-4 flex items-center justify-between`}>
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-white/10">
@@ -123,7 +130,7 @@ const ProjectCard = ({ project }) => (
         </div>
       </div>
 
-      <div className="p-6 space-y-4">
+      <div className="p-6 space-y-4 flex-grow">
         <p className="text-blue-100/80 leading-relaxed">
           {project.description}
         </p>
@@ -149,33 +156,33 @@ const ProjectCard = ({ project }) => (
             ))}
           </ul>
         </div>
+      </div>
 
-        <div className="flex gap-3 pt-4">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 hover:bg-blue-400/20 
-                     text-blue-300 rounded-lg transition-all duration-300"
-          >
-            <Github className="w-4 h-4" />
-            Code
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 hover:bg-blue-400/20 
-                     text-blue-300 rounded-lg transition-all duration-300"
-          >
-            <ExternalLink className="w-4 h-4" />
-            Live Demo
-          </motion.a>
-        </div>
+      <div className="flex gap-3 p-6 pt-0">
+        <motion.a
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 hover:bg-blue-400/20 
+                   text-blue-300 rounded-lg transition-all duration-300"
+        >
+          <Github className="w-4 h-4" />
+          Code
+        </motion.a>
+        <motion.a
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          href={project.live}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 hover:bg-blue-400/20 
+                   text-blue-300 rounded-lg transition-all duration-300"
+        >
+          <ExternalLink className="w-4 h-4" />
+          Live Demo
+        </motion.a>
       </div>
     </div>
   </div>
@@ -226,6 +233,7 @@ const Projects = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.2 }}
+                className="h-full"
               >
                 <ProjectCard project={project} />
               </motion.div>
