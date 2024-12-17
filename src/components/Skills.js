@@ -7,20 +7,19 @@ import {
   Paintbrush,
   Database, 
   Globe,
-  BookOpen,
-  Award,
   Terminal
 } from 'lucide-react';
+import { FaJava, FaPython, FaDatabase, FaCode, FaAws, FaFigma, FaWordpress, FaVideo, FaPalette, FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJsSquare } from 'react-icons/fa';
 
 const skillCategories = [
   {
     title: "Programming Languages",
     icon: <Code className="w-6 h-6" />,
     skills: [
-      { name: "Java", level: 85 },
-      { name: "Python", level: 80 },
-      { name: "SQL", level: 75 },
-      { name: "C++", level: 70 }
+      { name: "Java", level: 85, icon: <FaJava className="w-6 h-6 text-[#007396]" /> },
+      { name: "Python", level: 80, icon: <FaPython className="w-6 h-6 text-[#3776AB]" /> },
+      { name: "SQL", level: 75, icon: <FaDatabase className="w-6 h-6 text-[#003B57]" /> },
+      { name: "C++", level: 70, icon: <FaCode className="w-6 h-6 text-[#00599C]" /> }
     ]
   },
   {
@@ -35,19 +34,30 @@ const skillCategories = [
     title: "AWS & Cloud",
     icon: <Cloud className="w-6 h-6" />,
     skills: [
-      { name: "AWS Storage", level: 80 },
-      { name: "AWS Compute", level: 75 },
-      { name: "Cloud Computing", level: 70 }
+      { name: "AWS Storage", level: 80, icon: <FaAws className="w-6 h-6 text-[#FF9900]" /> },
+      { name: "AWS Compute", level: 75, icon: <FaAws className="w-6 h-6 text-[#FF9900]" /> },
+      { name: "Cloud Computing", level: 70, icon: <FaAws className="w-6 h-6 text-[#FF9900]" /> }
     ]
   },
   {
     title: "Design & Development",
     icon: <Paintbrush className="w-6 h-6" />,
     skills: [
-      { name: "Figma", level: 85 },
-      { name: "WordPress", level: 80 },
-      { name: "Video Editing", level: 75 },
-      { name: "Graphic Design", level: 80 }
+      { name: "Figma", level: 85, icon: <FaFigma className="w-6 h-6 text-[#F24E1E]" /> },
+      { name: "WordPress", level: 80, icon: <FaWordpress className="w-6 h-6 text-[#21759B]" /> },
+      { name: "Video Editing", level: 75, icon: <FaVideo className="w-6 h-6 text-[#FF0000]" /> },
+      { name: "Graphic Design", level: 80, icon: <FaPalette className="w-6 h-6 text-[#FF6347]" /> }
+    ]
+  },
+  {
+    title: "Web Development",
+    icon: <Terminal className="w-6 h-6" />,
+    skills: [
+      { name: "HTML", level: 90, icon: <FaHtml5 className="w-6 h-6 text-[#E34F26]" /> },
+      { name: "CSS", level: 85, icon: <FaCss3Alt className="w-6 h-6 text-[#1572B6]" /> },
+      { name: "JavaScript", level: 80, icon: <FaJsSquare className="w-6 h-6 text-[#F7DF1E]" /> },
+      { name: "React", level: 75, icon: <FaReact className="w-6 h-6 text-[#61DAFB]" /> },
+      { name: "Node.js", level: 70, icon: <FaNodeJs className="w-6 h-6 text-[#339933]" /> }
     ]
   },
   {
@@ -112,7 +122,7 @@ const Skills = () => {
             Skills & Expertise
           </h1>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-8 lg:px-16">
             {skillCategories.map((category, idx) => (
               <motion.div
                 key={category.title}
@@ -140,7 +150,10 @@ const Skills = () => {
                       transition={{ delay: idx * 0.1 + skillIdx * 0.1 }}
                     >
                       <div className="flex justify-between mb-1">
-                        <span className="text-blue-200">{skill.name}</span>
+                        <span className="text-blue-200 flex items-center gap-2">
+                          {skill.icon}
+                          {skill.name}
+                        </span>
                         <span className="text-blue-300">{skill.level}%</span>
                       </div>
                       <div className="w-full bg-blue-900/20 rounded-full h-2 overflow-hidden">

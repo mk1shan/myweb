@@ -12,6 +12,7 @@ import {
   Server,
   Coffee
 } from 'lucide-react';
+import { FaJsSquare, FaAws, FaPython, FaJava } from 'react-icons/fa';
 
 const certificates = [
   {
@@ -20,7 +21,7 @@ const certificates = [
     date: "2023",
     description: "Complete understanding of JavaScript fundamentals, DOM manipulation, and modern ES6+ features",
     category: "Web Development",
-    icon: <Code className="w-6 h-6" />
+    icon: <FaJsSquare className="w-6 h-6 text-[#F7DF1E]" />
   },
   {
     title: "Getting Started with Compute",
@@ -28,7 +29,7 @@ const certificates = [
     date: "2023",
     description: "Mastery in AWS compute services including EC2, Lambda, and elastic computing principles",
     category: "Cloud Computing",
-    icon: <Server className="w-6 h-6" />
+    icon: <FaAws className="w-6 h-6 text-[#FF9900]" />
   },
   {
     title: "Getting Started with Storage",
@@ -52,7 +53,7 @@ const certificates = [
     date: "2023",
     description: "Advanced Python programming concepts, data structures, and application development",
     category: "Programming",
-    icon: <Terminal className="w-6 h-6" />
+    icon: <FaPython className="w-6 h-6 text-[#3776AB]" />
   },
   {
     title: "Java Development",
@@ -60,7 +61,7 @@ const certificates = [
     date: "2023",
     description: "Comprehensive Java programming, OOP concepts, and enterprise application development",
     category: "Programming",
-    icon: <Coffee className="w-6 h-6" />
+    icon: <FaJava className="w-6 h-6 text-[#007396]" />
   }
 ];
 
@@ -118,7 +119,7 @@ const Certificates = () => {
             Certificates & Achievements
           </h1>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-8 lg:px-16">
             {certificates.map((cert, index) => (
               <motion.div
                 key={cert.title}

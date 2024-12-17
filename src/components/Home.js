@@ -166,7 +166,7 @@ const Home = () => {
           transition={{ duration: 0.8 }}
         >
           {/* Hero Section */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-24">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-24 px-4 md:px-8 lg:px-16">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -245,7 +245,7 @@ const Home = () => {
           </div>
 
           {/* Expertise Section */}
-          <section className="mb-24">
+          <section className="mb-24 px-4 md:px-8 lg:px-16">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text">
               My Expertise
             </h2>
@@ -276,7 +276,7 @@ const Home = () => {
           </section>
 
           {/* About Me Section */}
-          <section className="mb-24">
+          <section className="mb-24 px-4 md:px-8 lg:px-16">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text">
               Professional Summary
             </h2>
@@ -287,67 +287,67 @@ const Home = () => {
           </section>
 
           {/* Contact Section */}
-          <section className="mb-24 relative">
-  {/* Floating orbs background */}
-  <div className="absolute inset-0 overflow-hidden">
-    <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-float" />
-    <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-float-delayed" />
-  </div>
+          <section className="mb-24 relative px-4 md:px-8 lg:px-16">
+            {/* Floating orbs background */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-float" />
+              <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-float-delayed" />
+            </div>
 
-  <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-300 via-indigo-400 to-purple-400 text-transparent bg-clip-text">
-    Always Open to New Opportunities!
-  </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-300 via-indigo-400 to-purple-400 text-transparent bg-clip-text">
+              Always Open to New Opportunities!
+            </h2>
 
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6 }}
-    className="relative max-w-2xl mx-auto"
-  >
-    <div className="relative flex flex-col items-center bg-gradient-to-br from-blue-950/40 to-indigo-950/40 border border-blue-400/10 backdrop-blur-sm rounded-2xl p-8 space-y-6 shadow-lg">
-      {/* Gradient border glow */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-xl -z-10" />
-      
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="text-xl text-blue-100/90 leading-relaxed text-center"
-      >
-        I'm always excited to work with new technologies and collaborate on interesting projects. Feel free to connect with me!
-      </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative max-w-2xl mx-auto"
+            >
+              <div className="relative flex flex-col items-center bg-gradient-to-br from-blue-950/40 to-indigo-950/40 border border-blue-400/10 backdrop-blur-sm rounded-2xl p-8 space-y-6 shadow-lg">
+                {/* Gradient border glow */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-xl -z-10" />
+                
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-xl text-blue-100/90 leading-relaxed text-center"
+                >
+                  I'm always excited to work with new technologies and collaborate on interesting projects. Feel free to connect with me!
+                </motion.p>
 
-      <motion.button
-        whileHover={{ 
-          scale: 1.05,
-          boxShadow: "0 0 20px rgba(147, 197, 253, 0.3)"
-        }}
-        whileTap={{ scale: 0.95 }}
-        onClick={handleContact}
-        className="px-8 py-4 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 
-          rounded-full hover:from-blue-400 hover:via-indigo-400 hover:to-purple-400 
-          transition-all duration-300 shadow-lg hover:shadow-blue-500/25 
-          text-white font-medium tracking-wide"
-      >
-        Let's Connect
-      </motion.button>
-    </div>
-  </motion.div>
+                <motion.button
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 0 20px rgba(147, 197, 253, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleContact}
+                  className="px-8 py-4 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 
+                    rounded-full hover:from-blue-400 hover:via-indigo-400 hover:to-purple-400 
+                    transition-all duration-300 shadow-lg hover:shadow-blue-500/25 
+                    text-white font-medium tracking-wide"
+                >
+                  Let's Connect
+                </motion.button>
+              </div>
+            </motion.div>
 
-  <style jsx>{`
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-    .animate-float {
-      animation: float 6s ease-in-out infinite;
-    }
-    .animate-float-delayed {
-      animation: float 6s ease-in-out infinite;
-      animation-delay: 2s;
-    }
-  `}</style>
-</section>
+            <style jsx>{`
+              @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-20px); }
+              }
+              .animate-float {
+                animation: float 6s ease-in-out infinite;
+              }
+              .animate-float-delayed {
+                animation: float 6s ease-in-out infinite;
+                animation-delay: 2s;
+              }
+            `}</style>
+          </section>
         </motion.div>
       </div>
 

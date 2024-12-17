@@ -40,7 +40,7 @@ const About = () => {
             About Me
           </h1>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16">
             {/* Bio Section */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -86,10 +86,6 @@ const About = () => {
               <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 p-8 rounded-xl backdrop-blur-sm border border-blue-500/10 hover:border-blue-400/30 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all duration-500 mb-8">
                 <h2 className="text-2xl font-semibold mb-6 text-blue-100">Contact Information</h2>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-blue-200">
-                    
-                  
-                  </div>
                   <div className="flex items-center gap-3 text-blue-200">
                     <Mail className="w-5 h-5" />
                     <a href="mailto:mudipakishanimayanga@gmail.com" className="hover:text-blue-300 transition-colors">
