@@ -16,8 +16,16 @@ import {
   Brain,
   Globe,
   Video,
-  Box
+  Box,
+  Code2
 } from 'lucide-react';
+import {
+  FaCode,
+  FaNodeJs,
+  FaPython,
+  FaJava,
+  FaJsSquare
+} from 'react-icons/fa';
 
 const StarField = () => {
   return (
@@ -76,6 +84,33 @@ const skillBoxes = [
         title: 'Web Design & Development',
         desc: 'Full-stack web development, WordPress, React, Custom themes & plugins',
         gradient: 'from-yellow-500 to-orange-500'
+    }
+];
+
+const programmingLanguages = [
+    { 
+        icon: <FaPython className="w-8 h-8" />,
+        title: 'Python Programming',
+        desc: 'Data Analysis, Machine Learning, Web Development',
+        gradient: 'from-red-500 to-pink-500'
+    },
+    { 
+        icon: <FaJsSquare className="w-8 h-8" />,
+        title: 'JavaScript Programming',
+        desc: 'Frontend Development, Node.js, React',
+        gradient: 'from-yellow-500 to-green-500'
+    },
+    { 
+        icon: <FaJava className="w-8 h-8" />,
+        title: 'Java Programming',
+        desc: 'Backend Development, Spring Framework, Android Development',
+        gradient: 'from-blue-500 to-indigo-500'
+    },
+    { 
+        icon: <FaCode className="w-8 h-8" />,
+        title: 'C++ Programming',
+        desc: 'System Programming, Game Development, Competitive Programming',
+        gradient: 'from-purple-500 to-blue-500'
     }
 ];
 
@@ -268,6 +303,37 @@ const Home = () => {
                     </h3>
                     <p className="text-blue-200/70">
                       {skill.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* Programming Languages Section */}
+          <section className="mb-24 px-4 md:px-8 lg:px-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text">
+              Programming Languages
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {programmingLanguages.map((language, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -8 }}
+                  className="group p-6 rounded-2xl bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-500/10 backdrop-blur-sm hover:border-blue-500/30 transition-all duration-500"
+                >
+                  <div className="space-y-4">
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${language.gradient} w-fit group-hover:scale-110 transition-transform duration-300`}>
+                      {language.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold text-blue-100">
+                      {language.title}
+                    </h3>
+                    <p className="text-blue-200/70">
+                      {language.desc}
                     </p>
                   </div>
                 </motion.div>
